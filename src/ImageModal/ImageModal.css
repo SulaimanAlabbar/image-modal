@@ -1,13 +1,23 @@
 .ImageModal--modal {
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  width: 70%;
+  width: 70vw;
   height: auto;
   max-width: 1280px;
   max-height: 720px;
+  transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-  z-index: 110;
-  transform: translate(-50%, -50%);
+  z-index: 1001;
+}
+
+.ImageModal--modalImage {
+  flex: 1;
+  width: 100%;
+  height: auto;
+  max-width: 1280px;
+  max-height: 720px;
   animation: fadeIn 0.4s;
   user-select: none;
 }
@@ -19,9 +29,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 1000;
   animation: fadeIn 0.4s;
   user-select: none;
+  cursor: pointer;
 }
 
 .ImageModal--closeModal {
@@ -30,14 +41,73 @@
   height: calc(10px + 2vmax);
   right: 20px;
   top: 20px;
-  z-index: 110;
+  z-index: 1001;
   animation: fadeIn 0.4s;
   cursor: pointer;
   user-select: none;
 }
 
+.ImageModal--arrow {
+  position: absolute;
+  width: calc(10px + 2vmax);
+  height: calc(10px + 2vmax);
+  bottom: 50%;
+  animation: fadeIn 0.4s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ImageModal--prevImage {
+  right: 90%;
+}
+
+.ImageModal--nextImage {
+  left: 90%;
+}
+
+.ImageModal--thumbnails {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: row;
+}
+
+.ImageModal--thumbnails--image {
+  width: auto;
+  height: auto;
+  max-height: 3vmax;
+  margin: 0 5px;
+  border: 3px solid black;
+  animation: fadeIn 0.4s;
+  transition: transform 0.25s;
+  cursor: pointer;
+}
+
+.ImageModal--thumbnails--currentImage {
+  border: 3px solid white;
+  transform: scale(1.05);
+}
+
+.ImageModal--thumbnails--image:hover {
+  transform: scale(1.05);
+}
+
+.ImageModal--thumbnails--image:active {
+  transform: scale(1);
+}
+
 .ImageModal--close {
   animation: fadeOut 0.4s;
+}
+
+.ImageModal--hide {
+  display: none;
+}
+
+.ImageModal--hideCursor {
+  cursor: none;
 }
 
 @keyframes fadeIn {
@@ -66,4 +136,85 @@
 
 .fadeOut {
   animation-name: fadeOut;
+}
+
+@media (min-width: 425px) {
+  .ImageModal--thumbnails--image {
+    max-height: 3.5vmax;
+  }
+
+  .ImageModal--arrow {
+    width: calc(10px + 3vmax);
+    height: calc(10px + 3vmax);
+  }
+
+  .ImageModal--prevImage {
+    right: 90%;
+  }
+
+  .ImageModal--nextImage {
+    left: 90%;
+  }
+}
+
+@media (min-width: 500px) {
+  .ImageModal--thumbnails--image {
+    max-height: 4vmax;
+  }
+
+  .ImageModal--prevImage {
+    right: 91%;
+  }
+
+  .ImageModal--nextImage {
+    left: 91%;
+  }
+}
+
+@media (min-width: 600px) {
+  .ImageModal--thumbnails--image {
+    max-height: 4.5vmax;
+  }
+
+  .ImageModal--prevImage {
+    right: 92%;
+  }
+
+  .ImageModal--nextImage {
+    left: 92%;
+  }
+}
+
+@media (min-width: 768px) {
+  .ImageModal--thumbnails--image {
+    max-height: 5vmax;
+  }
+
+  .ImageModal--arrow {
+    width: calc(10px + 5vmax);
+    height: calc(10px + 5vmax);
+  }
+
+  .ImageModal--prevImage {
+    right: 91%;
+  }
+
+  .ImageModal--nextImage {
+    left: 91%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ImageModal--arrow {
+    width: calc(10px + 5vmax);
+    height: calc(10px + 5vmax);
+  }
+
+  .ImageModal--prevImage {
+    right: 92%;
+  }
+
+  .ImageModal--nextImage {
+    left: 92%;
+  }
 }
