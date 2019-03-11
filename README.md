@@ -1,1 +1,1 @@
-Image Modal React Component.
+React Image Modal Component.

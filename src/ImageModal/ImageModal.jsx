@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Img from "../Img";
 import CloseIcon from "./close.svg";
 import NextIcon from "./next.svg";
@@ -21,10 +22,7 @@ export default class ImageModal extends Component {
     this._mounted = true;
 
     this.setState({
-      currentImageIndex:
-        this.props.currentImageIndex === undefined
-          ? 0
-          : this.props.currentImageIndex
+      currentImageIndex: this.props.startingImageIndex
     });
   };
 
@@ -57,7 +55,7 @@ export default class ImageModal extends Component {
       this._timeout = setTimeout(() => {
         if (!this._mounted) return;
         this.setState({ arrowsHiding: true });
-      }, 1000000);
+      }, 1000);
     });
   };
 
@@ -99,7 +97,11 @@ export default class ImageModal extends Component {
         <div className="ImageModal--modal">
           <Img
             image={images[currentImageIndex].full}
-            placeholder={images[currentImageIndex].placeholder}
+            placeholder={
+              images[currentImageIndex].placeholder
+                ? images[currentImageIndex].placeholder
+                : images[currentImageIndex].full
+            }
             className={`ImageModal--modalImage${
               arrowsHidden ? " ImageModal--hideCursor" : ""
             }${modalClose ? " ImageModal--close" : ""}`}
@@ -172,3 +174,32 @@ export default class ImageModal extends Component {
     );
   }
 }
+
+ImageModal.defaultProps = {
+  thumbnails: false,
+  startingImageIndex: 0
+};
+
+ImageModal.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.exact({
+      full: PropTypes.string.isRequired,
+      placeholder: PropTypes.string
+    })
+  ).isRequired,
+  onModalClose: PropTypes.func.isRequired,
+  startingImageIndex: PropTypes.number,
+  thumbnails(props, propName, componentName) {
+    if (typeof props[propName] !== "boolean") {
+      return new Error(
+        `'${propName}' supplied to '${componentName}' needs to be a boolean.`
+      );
+    }
+    if (props[propName] && typeof props.images[0].placeholder === "undefined") {
+      return new Error(
+        `'${propName}' can only be supplied to '${componentName}' if the objects of prop 'images' have a placeholder property.`
+      );
+    }
+    return null;
+  }
+};

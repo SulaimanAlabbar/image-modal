@@ -38,12 +38,14 @@ export default class Img extends Component {
 
   render() {
     const { fullImageLoaded } = this.state;
-    const { image, placeholder, className, ...props } = this.props;
+    const { image, placeholder, alt, className, ...props } = this.props;
+
+    const imgAlt = this.props.alt ? this.props.alt : `${image}`;
 
     return placeholder ? (
       <img
         src={placeholder}
-        alt={`${image}`}
+        alt={imgAlt}
         className={`${className}${fullImageLoaded ? "" : " Img--blur"}`}
         onLoad={this.handleLoadEnd}
         data-imagetype="placeholder"
@@ -51,7 +53,11 @@ export default class Img extends Component {
         {...props}
       />
     ) : (
-      <img src={image} alt={`${image}`} className={className} {...props} />
+      <img src={image} alt={imgAlt} className={className} {...props} />
     );
   }
 }
+
+Img.defaultProps = {
+  placeholder: false
+};

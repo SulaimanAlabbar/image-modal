@@ -18,8 +18,10 @@
   height: auto;
   max-width: 1280px;
   max-height: 720px;
+  border-radius: 5px;
   animation: fadeIn 0.4s;
   user-select: none;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 .ImageModal--shade {
@@ -55,14 +57,19 @@
   animation: fadeIn 0.4s;
   cursor: pointer;
   user-select: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5%;
+  padding: 10px 0;
 }
 
 .ImageModal--prevImage {
   right: 90%;
+  padding-left: 0;
 }
 
 .ImageModal--nextImage {
   left: 90%;
+  padding-right: 0;
 }
 
 .ImageModal--thumbnails {
@@ -80,9 +87,11 @@
   max-height: 3vmax;
   margin: 0 5px;
   border: 3px solid black;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
   animation: fadeIn 0.4s;
   transition: transform 0.25s;
   cursor: pointer;
+  border-radius: 2%;
 }
 
 .ImageModal--thumbnails--currentImage {
@@ -150,10 +159,12 @@
 
   .ImageModal--prevImage {
     right: 90%;
+    padding-left: -5px;
   }
 
   .ImageModal--nextImage {
     left: 90%;
+    padding-right: -5px;
   }
 }
 
@@ -163,11 +174,13 @@
   }
 
   .ImageModal--prevImage {
+    padding-left: 2px;
     right: 91%;
   }
 
   .ImageModal--nextImage {
     left: 91%;
+    padding-right: 2px;
   }
 }
 
@@ -178,10 +191,12 @@
 
   .ImageModal--prevImage {
     right: 92%;
+    padding-left: 7px;
   }
 
   .ImageModal--nextImage {
     left: 92%;
+    padding-right: 7px;
   }
 }
 
@@ -197,10 +212,12 @@
 
   .ImageModal--prevImage {
     right: 91%;
+    padding-left: 3px;
   }
 
   .ImageModal--nextImage {
     left: 91%;
+    padding-right: 3px;
   }
 }
 
@@ -212,9 +229,26 @@
 
   .ImageModal--prevImage {
     right: 92%;
+    padding-left: 1px;
   }
 
   .ImageModal--nextImage {
     left: 92%;
+    padding-right: 1px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .ImageModal--closeModal {
+    width: 48px;
+    height: 48px;
+  }
+  .ImageModal--arrow {
+    width: 106px;
+    height: 106px;
+  }
+
+  .ImageModal--thumbnails--image {
+    height: 96px;
   }
 }
