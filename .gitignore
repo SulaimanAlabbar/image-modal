@@ -1,3 +1,4 @@
 /node_modules
 .directory
 src/images.json
+nginx.conf
